@@ -6,7 +6,7 @@ class Announcement():
         r : requests.Response = requests.get(link)
         soup : BS = BS(r.text, "html.parser")
         news = soup.find("table", class_ = "single_news")
-        print(news)
+        # print(news)
         self.title : str = news.find("tr", class_ = "news_title").td.string
         self.date : str = news.find("tr", class_ = "news_date").td.string
         self.unit : str = news.find("tr", class_ = "news_unit").td.string

@@ -8,9 +8,13 @@ for ann_link in announcements:
     # print(ann_link["href"])
     ann = Announcement(ann_link["href"])
     # print(ann.content)
-    print(ann.title)
+    print("公告名稱: " + ann.title)
     print()
     for content in ann.content:
         print(content, end = '')
+    print()
+    print(f"檔案連結: {len(ann.attachment)}")
+    for attachment in ann.attachment:
+        print(f"附件名稱: {attachment[0]}\n附件連結: {attachment[1]}")
     print("\n\n")
 

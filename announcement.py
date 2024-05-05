@@ -19,7 +19,7 @@ class Announcement():
         data = hashlib.md5()
         data.update(self.link.encode('utf-8'))
         # print(type(data.digest()))
-        return int.from_bytes(data.digest())
+        return int.from_bytes(data.digest(), byteorder='big')
     def __get_content(self) -> str:
         contents = self.news.find("tr", class_ = "news_content").td.div
         content_temp = []

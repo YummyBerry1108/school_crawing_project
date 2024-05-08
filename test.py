@@ -3,9 +3,9 @@ from bs4 import BeautifulSoup as BS
 from announcement import Announcement
 r = requests.get("https://www.ttsh.tp.edu.tw/category/news/news_01/")
 soup = BS(r.text,"html.parser")
-announcements = soup.find_all("a", class_ = "news_title", limit=5)
+announcements = soup.find_all("a", class_ = "news_title", limit=7)
 hash_values = []
-for ann_link in announcements:
+for ann_link in announcements[2::]:
     # print(ann_link["href"])
     ann = Announcement(ann_link["href"])
     hash_values.append(ann.hash_value)

@@ -4,6 +4,7 @@ class Announcement():
     def __init__(self, link : str) -> None:
         r : requests.Response = requests.get(link)
         soup : BS = BS(r.text, "html.parser")
+        self.id = 0
         self.link : str = link
         self.news = soup.find("table", class_ = "single_news")
         self.hash_value = self.__get_hash()
@@ -34,4 +35,8 @@ class Announcement():
             link = attach_tag.find("span", class_ = "modal_download").a.get("href")
             attach_pairs.append((name, link))
         return attach_pairs
+    def date_to_day(self) -> int:
+        str_list = self.date.split()
+        return int(str_list[0])*366 + int(str_list[2])*31 + int(str_list[4])
+
     
